@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FOODSTORE">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FoodStore</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+<div class="row">
+    <div class="page-header" class="col-md-12">
+        <h2>FOODSTORE</h2>
+    </div>
+</div>
+
+<div ng-controller="StoreController as store" class="row">
+    <div  class="col-md-4" ng-repeat="food in store.foods" >
+
+<img ng-src={{food.image}} width="280px" height="400px">
+<p>  Name: {{food.name}}</p>
+<p>  Quantity: {{food.quantity}}</p>
+<p>  cost: &#8377; {{food.cost}}</p>
+    <button type="button" class="btn btn-primary" ng-hide="{{food.isSoldOut}}">BUY NOW</button>
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-class="{'active':food.activeTab==='discription'}"><a ng-click="store.setActiveTab(food,'discription')">description</a></li>
+            <li role="presentation" ng-class="{'active':food.activeTab==='specification'}"><a ng-click="store.setActiveTab(food,'specification')">specification</a></li>
+            <li role="presentation" ng-class="{'active':food.activeTab==='reviews'}"><a ng-click="store.setActiveTab(food,'reviews')" >reviews</a></li>
+        </ul>
+        <p ng-show="food.activeTab==='discription'"> discription goes here</p>
+        <p ng-show="food.activeTab==='specification'">specification goes here</p>
+        <p ng-show="food.activeTab==='reviews'">reviews goes here</p>
+
+    </div>
+
+</div>
+<script src="angular.min.js"></script>g
+<script src="app.js"></script>
+</body>
+</html>
